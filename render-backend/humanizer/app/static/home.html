@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>ToolNest — Free Online Tools: PDF, AI Humanizer & Video Clipper</title>
+<meta name="description" content="Free all-in-one toolkit: 29+ PDF tools, an AI text humanizer, and an AI video clipper. No signup, no watermark." />
+<meta name="keywords" content="free online tools, pdf tools, merge pdf, compress pdf, ai humanizer, humanize ai text, ai video clipper, youtube to shorts, free tools" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://toolnest.com/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ToolNest — Free Online Tools" />
+<meta property="og:description" content="PDF tools, AI humanizer & video clipper — all free, one place." />
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"ToolNest","url":"https://toolnest.com/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Is ToolNest free?","acceptedAnswer":{"@type":"Answer","text":"Yes, every tool is free with no signup and no watermark."}},
+{"@type":"Question","name":"Do I need an account?","acceptedAnswer":{"@type":"Answer","text":"No account needed. Open a tool and use it instantly."}},
+{"@type":"Question","name":"Are my files safe?","acceptedAnswer":{"@type":"Answer","text":"Files are processed securely and deleted automatically."}}]}
+</script>
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧰</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#000000; --bg2:#0a0a0a; --card:#111111; --card-hover:#1a1a1a;
+    --text:#ffffff; --muted:#a1a1aa; --border:#27272a;
+    --glass-bg:rgba(255,255,255,.05); --glass-border:rgba(255,255,255,.15);
+    --max:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
+
+  /* HEADER */
+  header.site{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.7);
+    backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .hbar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:19px;letter-spacing:-.3px}
+  .brand .mk{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
+    background:#fff;color:#000;font-size:15px}
+  .nav{display:flex;gap:6px;align-items:center}
+  .nav a{padding:8px 14px;border-radius:9px;font-size:14.5px;font-weight:500;color:var(--muted);transition:.15s}
+  .nav a:hover{color:#fff;background:var(--glass-bg)}
+  .nav a.cta{background:#fff;color:#000;font-weight:600}
+  .nav a.cta:hover{background:#e4e4e7}
+  .burger{display:none;background:none;border:none;font-size:24px;cursor:pointer;color:#fff}
+
+  /* HERO */
+  .hero{text-align:center;padding:96px 0 56px;position:relative}
+  .hero::before{content:"";position:absolute;top:-10%;left:50%;transform:translateX(-50%);
+    width:600px;height:400px;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);pointer-events:none}
+  .hero .tag{display:inline-block;background:var(--glass-bg);border:1px solid var(--glass-border);
+    color:var(--muted);font-size:13px;font-weight:500;padding:7px 16px;border-radius:30px;margin-bottom:26px}
+  .hero h1{font-size:clamp(34px,6vw,60px);font-weight:900;letter-spacing:-2px;line-height:1.05;margin-bottom:20px}
+  .hero h1 .g{color:var(--muted)}
+  .hero p{font-size:clamp(15px,2.2vw,19px);color:var(--muted);max-width:560px;margin:0 auto 30px}
+  .hero .btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .btn{padding:13px 26px;border-radius:11px;font-weight:600;font-size:15px;display:inline-block;transition:.15s}
+  .btn-w{background:#fff;color:#000}
+  .btn-w:hover{background:#e4e4e7;transform:translateY(-2px)}
+  .btn-o{background:var(--glass-bg);color:#fff;border:1px solid var(--glass-border)}
+  .btn-o:hover{border-color:#fff}
+
+  section{padding:48px 0}
+  .sh{text-align:center;max-width:560px;margin:0 auto 40px}
+  .sh h2{font-size:clamp(24px,4vw,36px);font-weight:800;letter-spacing:-.8px;margin-bottom:10px}
+  .sh p{color:var(--muted);font-size:15.5px}
+
+  /* TOOL CARDS */
+  .tools{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tool{display:block;background:var(--card);border:1px solid var(--border);border-radius:16px;
+    padding:28px;transition:.2s;position:relative;overflow:hidden}
+  .tool:hover{background:var(--card-hover);border-color:var(--glass-border);transform:translateY(-4px)}
+  .tool .ic{width:54px;height:54px;border-radius:13px;display:grid;place-items:center;font-size:25px;
+    background:var(--glass-bg);border:1px solid var(--glass-border);margin-bottom:18px}
+  .tool h3{font-size:20px;font-weight:700;margin-bottom:8px}
+  .tool p{color:var(--muted);font-size:14px;margin-bottom:16px}
+  .tool ul{list-style:none;margin-bottom:20px}
+  .tool ul li{font-size:13.5px;color:var(--muted);padding:4px 0 4px 22px;position:relative}
+  .tool ul li::before{content:"→";position:absolute;left:0;color:#fff}
+  .tool .go{font-weight:600;font-size:14px;color:#fff;display:inline-flex;gap:6px;align-items:center;transition:.15s}
+  .tool:hover .go{gap:11px}
+
+  /* CATEGORIES */
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cat{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:22px;text-align:center;transition:.15s}
+  .cat:hover{border-color:var(--glass-border);background:var(--card-hover)}
+  .cat .ci{font-size:26px;margin-bottom:9px}
+  .cat h4{font-size:14.5px;font-weight:700;margin-bottom:3px}
+  .cat span{font-size:12.5px;color:var(--muted)}
+
+  /* WHY */
+  .why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .feat{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:26px}
+  .feat .fi{font-size:23px;margin-bottom:12px}
+  .feat h4{font-size:17px;font-weight:700;margin-bottom:7px}
+  .feat p{color:var(--muted);font-size:13.5px}
+
+  /* FAQ */
+  .faq{max-width:720px;margin:0 auto}
+  .qa{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:19px 22px;margin-bottom:12px;cursor:pointer;transition:.15s}
+  .qa:hover{border-color:var(--glass-border)}
+  .qa h4{font-size:15.5px;font-weight:600;display:flex;justify-content:space-between;align-items:center}
+  .qa h4 span{color:var(--muted);font-size:20px;transition:.2s}
+  .qa p{color:var(--muted);font-size:14px;max-height:0;overflow:hidden;transition:.25s;opacity:0}
+  .qa.on p{max-height:180px;opacity:1;margin-top:10px}
+  .qa.on h4 span{transform:rotate(45deg);color:#fff}
+
+  /* CTA */
+  .cta-b{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--border);
+    border-radius:22px;padding:52px 26px;text-align:center}
+  .cta-b h2{font-size:clamp(24px,4vw,34px);font-weight:800;margin-bottom:12px;letter-spacing:-.6px}
+  .cta-b p{color:var(--muted);margin-bottom:24px}
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);margin-top:52px;padding:44px 0 28px}
+  .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px;margin-bottom:30px}
+  .fb p{color:var(--muted);font-size:13.5px;margin-top:12px;max-width:270px}
+  .fc h5{font-size:13px;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--muted)}
+  .fc a{display:block;color:var(--muted);font-size:13.5px;padding:4px 0;transition:.15s}
+  .fc a:hover{color:#fff}
+  .fbot{border-top:1px solid var(--border);padding-top:22px;text-align:center;color:var(--muted);font-size:13px}
+
+  @media(max-width:840px){
+    .nav{display:none}.burger{display:block}
+    .tools,.why{grid-template-columns:1fr}.cats{grid-template-columns:repeat(2,1fr)}
+    .fg{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap hbar">
+    <a href="/" class="brand"><span class="mk">🧰</span> ToolNest</a>
+    <nav class="nav" id="nav">
+      <a href="/pdf">PDF Tools</a>
+      <a href="/humanizer">AI Humanizer</a>
+      <a href="/clipper">Video Clipper</a>
+      <a href="/blog">Blog</a>
+      <a href="#tools" class="cta">All Tools</a>
+    </nav>
+    <button class="burger" onclick="document.getElementById('nav').style.display='flex'">☰</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero">
+    <span class="tag">🧰 3 free tools · one place · no signup</span>
+    <h1>Every tool you need,<br><span class="g">in one place.</span></h1>
+    <p>Free PDF tools, an AI text humanizer, and a video clipper — fast, clean, and without watermarks.</p>
+    <div class="btns">
+      <a href="#tools" class="btn btn-w">Browse Tools</a>
+      <a href="/blog" class="btn btn-o">Read the Blog</a>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section id="tools">
+    <div class="sh"><h2>Choose a tool</h2><p>Three tools, each built to do one job perfectly.</p></div>
+    <div class="tools">
+      <a href="/pdf" class="tool">
+        <div class="ic">📄</div>
+        <h3>PDF Tools</h3>
+        <p>29+ tools to convert, edit, and manage PDF files.</p>
+        <ul><li>Merge, Split, Compress</li><li>PDF ↔ Word, Excel, JPG</li><li>Edit, Sign, Protect, Unlock</li></ul>
+        <span class="go">Open PDF Tools →</span>
+      </a>
+      <a href="/humanizer" class="tool">
+        <div class="ic">🤖</div>
+        <h3>AI Humanizer</h3>
+        <p>Make AI-written text sound natural and human.</p>
+        <ul><li>Bypasses AI detectors</li><li>Keeps your meaning</li><li>Custom style profiles</li></ul>
+        <span class="go">Open AI Humanizer →</span>
+      </a>
+      <a href="/clipper" class="tool">
+        <div class="ic">🎬</div>
+        <h3>Video Clipper</h3>
+        <p>Turn long videos into viral 9:16 shorts.</p>
+        <ul><li>Auto-cut viral moments</li><li>YouTube link or upload</li><li>No watermark</li></ul>
+        <span class="go">Open Video Clipper →</span>
+      </a>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="sh"><h2>Built for everyone</h2><p>Whatever you do, there's a tool that saves you time.</p></div>
+    <div class="cats">
+      <div class="cat"><div class="ci">🎓</div><h4>Students</h4><span>Assignments & PDFs</span></div>
+      <div class="cat"><div class="ci">✍️</div><h4>Writers</h4><span>Humanize & publish</span></div>
+      <div class="cat"><div class="ci">📈</div><h4>Marketers</h4><span>Clips & content</span></div>
+      <div class="cat"><div class="ci">💼</div><h4>Professionals</h4><span>Fast documents</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="sh"><h2>Why ToolNest?</h2></div>
+    <div class="why">
+      <div class="feat"><div class="fi">⚡</div><h4>Instant</h4><p>Everything runs in seconds, right in your browser.</p></div>
+      <div class="feat"><div class="fi">🔒</div><h4>Private</h4><p>Files are processed securely and deleted automatically.</p></div>
+      <div class="feat"><div class="fi">🎁</div><h4>Free</h4><p>No hidden fees, no trials, no watermarks.</p></div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap">
+  <section>
+    <div class="sh"><h2>FAQ</h2></div>
+    <div class="faq">
+      <div class="qa" onclick="this.classList.toggle('on')"><h4>Is ToolNest free? <span>+</span></h4><p>Yes — every tool is 100% free, no signup, no watermark.</p></div>
+      <div class="qa" onclick="this.classList.toggle('on')"><h4>Do I need an account? <span>+</span></h4><p>No. Just open a tool and start using it instantly.</p></div>
+      <div class="qa" onclick="this.classList.toggle('on')"><h4>Are my files safe? <span>+</span></h4><p>Yes. Files are processed securely and deleted automatically.</p></div>
+      <div class="qa" onclick="this.classList.toggle('on')"><h4>Can I use it on mobile? <span>+</span></h4><p>Yes, it works on any device with a browser.</p></div>
+    </div>
+  </section>
+</div>
+
+<div class="wrap"><section><div class="cta-b">
+  <h2>Ready to save time?</h2>
+  <p>Pick a tool and get started in seconds.</p>
+  <a href="#tools" class="btn btn-w">Browse Tools</a>
+</div></section></div>
+
+<footer>
+  <div class="wrap">
+    <div class="fg">
+      <div class="fb">
+        <a href="/" class="brand"><span class="mk">🧰</span> ToolNest</a>
+        <p>Free online tools for students, creators and professionals.</p>
+      </div>
+      <div class="fc"><h5>Tools</h5><a href="/pdf">PDF Tools</a><a href="/humanizer">AI Humanizer</a><a href="/clipper">Video Clipper</a></div>
+      <div class="fc"><h5>Resources</h5><a href="/blog">Blog</a><a href="/about">About</a><a href="/contact">Contact</a></div>
+      <div class="fc"><h5>Legal</h5><a href="/privacy">Privacy</a><a href="/terms">Terms</a></div>
+    </div>
+    <div class="fbot">© 2026 ToolNest. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

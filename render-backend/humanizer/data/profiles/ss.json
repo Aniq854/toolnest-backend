@@ -1,0 +1,42 @@
+{
+  "id": "ss",
+  "name": "ss",
+  "created_at": "2026-08-12T07:46:47+00:00",
+  "sample_word_count": 161,
+  "fingerprint": {
+    "avg_sentence_len": 26.83,
+    "sentence_len_stdev": 5.52,
+    "long_word_pct": 34.78,
+    "flesch_reading_ease": 0.42,
+    "contraction_rate": 0.0,
+    "first_person_rate": 0.0,
+    "second_person_rate": 0.0,
+    "comma_rate": 1.33,
+    "question_rate": 0.0,
+    "para_avg_sentences": 6.0
+  },
+  "traits": {
+    "voice_summary": "Is shakhs ki awaaz technical aur formal hai, jismein complex concepts ko clearly explain kiya jata hai. Unka writing style informative aur detailed hai.",
+    "tone_labels": [
+      "technical",
+      "formal",
+      "informative"
+    ],
+    "signature_phrases": [
+      "real-time",
+      "computer vision",
+      "kinematics"
+    ],
+    "common_openers": [
+      "The integration of"
+    ],
+    "avoid_words": [
+      "simple",
+      "easy",
+      "fun"
+    ],
+    "punctuation_habits": "commas, semicolons, technical terms ke liye brackets ka istemal",
+    "person": "third",
+    "formality": "formal"
+  }
+}

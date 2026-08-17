@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>http://localhost:8000/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>http://localhost:8000/humanizer</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>http://localhost:8000/ai/writing-tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>http://localhost:8000/ai/image-tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>http://localhost:8000/ai/video-tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>http://localhost:8000/ai/coding-tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>http://localhost:8000/ai/productivity-tools</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>http://localhost:8000/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>http://localhost:8000/blog/best-free-ai-tools-2026</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>http://localhost:8000/blog/ai-tools-for-students</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>http://localhost:8000/blog/free-ai-writing-tools</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

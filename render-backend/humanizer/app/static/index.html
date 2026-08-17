@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free AI Text Humanizer - Make AI Sound Human</title>
+  <meta name="description" content="Free AI text humanizer tool. Transform robotic AI-generated text from ChatGPT into natural, human-sounding writing. 100% Free, no sign-up required."/>
+  <meta name="keywords" content="ai humanizer, bypass ai detectors, humanize ai text, chatgpt to human converter, ai text converter"/>
+  <link rel="canonical" href="http://localhost:8000/"/>
+  <meta property="og:title" content="Free AI Text Humanizer - Make AI Sound Human"/>
+  <meta property="og:description" content="Transform robotic AI-generated text into natural, human-sounding writing."/>
+  <meta property="og:type" content="website"/>
+  <link rel="stylesheet" href="/static/style.css"/>
+  <style>
+    .faq-section { margin-top: 60px; max-width: 800px; margin-left: auto; margin-right: auto; }
+    details { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); margin-bottom: 12px; padding: 16px; box-shadow: var(--shadow); }
+    summary { font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; font-size: 20px; color: var(--accent); }
+    details[open] summary::after { content: '-'; }
+    details p { margin-top: 12px; color: var(--muted); line-height: 1.6; }
+    .seo-content { margin-top: 80px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+    .seo-content h2 { font-size: 24px; margin-bottom: 24px; text-align: center; }
+    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .feature-card { background: var(--bg); border: 1px solid var(--border); padding: 24px; border-radius: var(--radius); text-align: center; }
+    .feature-icon { font-size: 32px; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="site">
+  <div class="wrap hbar">
+    <a href="/" class="brand"><div class="mk">🧰</div>ToolNest</a>
+    <button class="burger" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('show')">☰</button>
+    <nav class="nav" id="nav">
+      <a href="/pdf">PDF Tools</a>
+      <a href="/humanizer" style="color:#fff;background:rgba(255,255,255,.05);">AI Humanizer</a>
+      <a href="/clipper">Video Clipper</a>
+      <a href="/blog">Blog</a>
+      <a href="#tools" class="cta">All Tools</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== TOOL HERO ===== -->
+<section class="hero">
+  <div class="hero-badge"> 100% Free "¢ No Sign-Up Required</div>
+  <h1>Make AI Text Sound <span>Human</span></h1>
+  <p>
+    Convert robotic ChatGPT output into natural, readable writing that matches your personal voice. 
+    Drop your AI text below to humanize it instantly.
+  </p>
+</section>
+
+<!-- ===== THE ACTUAL TOOL ===== -->
+<div class="tool-page-body">
+
+
+  <!-- Controls -->
+  <section class="controls">
+    <label id="toneWrap">Tone
+      <select id="tone">
+        <option value="blog" selected>Blog</option>
+        <option value="casual">Casual</option>
+        <option value="professional">Professional</option>
+        <option value="academic">Academic</option>
+        <option value="simple">Simple English</option>
+        <option value="storytelling">Storytelling</option>
+      </select>
+    </label>
+    <label id="levelWrap">Reading level
+      <select id="level">
+        <option value="easy">Easy</option>
+        <option value="medium" selected>Medium</option>
+        <option value="advanced">Advanced</option>
+      </select>
+    </label>
+    <label>Rewrite strength
+      <select id="strength">
+        <option value="1">1 "” Light</option>
+        <option value="2" selected>2 "” Balanced</option>
+        <option value="3">3 "” Heavy</option>
+      </select>
+    </label>
+    <label>Provider
+      <select id="provider"><option value="">(default from .env)</option></select>
+    </label>
+    <label class="check">
+      <input type="checkbox" id="keepLength" checked />
+      Maintain length
+    </label>
+  </section>
+
+  <!-- Editor panes -->
+  <section class="panes">
+    <div class="pane">
+      <div class="pane-head">
+        <h2>Input</h2>
+        <span class="count" id="inCount">0 words</span>
+      </div>
+      <textarea id="input" placeholder="Paste AI-generated draft here..."></textarea>
+      <div class="actions">
+        <button id="analyzeBtn" class="ghost">Analyze (free)</button>
+        <button id="runBtn" class="primary">Humanize</button>
+      </div>
+    </div>
+    
+    <div class="pane">
+      <div class="pane-head">
+        <h2>Output</h2>
+        <span class="count" id="outCount">0 words</span>
+      </div>
+      <textarea id="output" placeholder="Rewritten text will appear here..."></textarea>
+      <div class="actions">
+        <button id="copyBtn" class="ghost">Copy</button>
+        <button id="downloadBtn" class="ghost">Download .txt</button>
+        <button id="diffBtn" class="ghost">Show diff</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status / Errors -->
+  <section id="status" class="status" hidden></section>
+
+
+
+  <!-- Diff Viewer -->
+  <section id="diffBox" class="diff" hidden>
+    <h2>What changed</h2>
+    <div id="diffContent"></div>
+  </section>
+
+  <!-- Stats / Metrics -->
+  <section id="report" class="report" hidden>
+    <h2>Quality report</h2>
+    <div class="grid" id="metricGrid"></div>
+    <ul id="tips"></ul>
+  </section>
+</div>
+
+<!-- ===== SEO CONTENT (How it works & Features) ===== -->
+<section class="section seo-content">
+  <h2>Why Use Our AI Text Humanizer?</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">ðŸ§ </div>
+      <h3>Advanced Natural Language</h3>
+      <p>We use state-of-the-art heuristics and language models to replace repetitive AI vocabulary with rich, natural human phrases.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">ðŸ‘¤</div>
+      <h3>Voice Profile Matching</h3>
+      <p>Train the humanizer on your own writing samples. The output will mimic your unique sentence structure, vocabulary, and rhythm.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">âš¡</div>
+      <h3>100% Free & Lightning Fast</h3>
+      <p>Powered by ultra-fast Groq Llama models, our tool humanizes text in milliseconds without any subscriptions or sign-ups.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section faq-section">
+  <h2>Frequently Asked Questions</h2>
+  <details>
+    <summary>What is an AI Text Humanizer?</summary>
+    <p>An AI Text Humanizer is a tool that takes robotic, predictable text generated by AI (like ChatGPT or Gemini) and rewrites it to sound natural, conversational, and human. It removes typical AI markers like repetitive sentence structures and common "AI words" (e.g., "delve", "furthermore", "tapestry").</p>
+  </details>
+  <details>
+    <summary>Does this tool bypass AI detectors?</summary>
+    <p>While our tool significantly improves the naturalness and readability of text"”which often results in lower AI detection scores"”it is designed primarily to improve writing quality for your readers. <strong>Disclaimer: Do not use this tool for academic dishonesty or to cheat on assignments.</strong></p>
+  </details>
+  <details>
+    <summary>Is this AI humanizer really free?</summary>
+    <p>Yes! Our tool is 100% free to use. There are no word limits, no paywalls, and you don't even need to create an account.</p>
+  </details>
+  <details>
+    <summary>How does the Voice Profile feature work?</summary>
+    <p>You can paste a few samples of your own past writing. Our system analyzes your vocabulary, sentence length variance, and tone. When you humanize AI text, we apply those specific rules so the result sounds exactly like you wrote it.</p>
+  </details>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">ðŸ§° Tool<span>Nest</span></div>
+        <p>The smartest free tool to make AI text sound human, natural, and engaging.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Use Cases</h4>
+        <ul>
+          <li><a href="/use-cases/students">For Students</a></li>
+          <li><a href="/use-cases/seo-bloggers">For SEO & Bloggers</a></li>
+          <li><a href="/use-cases/marketers">For Marketers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/blog">Blog & Guides</a></li>
+          <li><a href="/blog/how-to-bypass-ai-detectors">Bypass AI Detectors</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Â© 2026 AI Humanizer. All rights reserved.</p>
+      <p>Built with â¤ï¸ for better writing.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/static/app.js"></script>
+<script src="/static/nav.js"></script>
+</body>
+</html>
+

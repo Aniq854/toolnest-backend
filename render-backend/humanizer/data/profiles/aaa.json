@@ -1,0 +1,43 @@
+{
+  "id": "aaa",
+  "name": "aaa",
+  "created_at": "2026-08-12T09:16:07+00:00",
+  "sample_word_count": 302,
+  "fingerprint": {
+    "avg_sentence_len": 27.45,
+    "sentence_len_stdev": 7.91,
+    "long_word_pct": 37.09,
+    "flesch_reading_ease": -6.48,
+    "contraction_rate": 0.0,
+    "first_person_rate": 0.0,
+    "second_person_rate": 0.0,
+    "comma_rate": 1.45,
+    "question_rate": 0.0,
+    "para_avg_sentences": 11.0
+  },
+  "traits": {
+    "voice_summary": "Is shakhs ki awaaz technical aur formal hai, jo computer vision aur machine learning ke vishay par gehrai se charcha karti hai. Unka likhne ka tareeka spasht aur visheshagyata se bhara hua hai.",
+    "tone_labels": [
+      "technical",
+      "formal",
+      "informative"
+    ],
+    "signature_phrases": [
+      "real-time movement tracking",
+      "computer vision",
+      "machine learning"
+    ],
+    "common_openers": [
+      "The integration of",
+      "By executing"
+    ],
+    "avoid_words": [
+      "simple",
+      "easy",
+      "fun"
+    ],
+    "punctuation_habits": "commas, semicolons, technical terms ke liye brackets ka istemal",
+    "person": "third",
+    "formality": "very formal"
+  }
+}

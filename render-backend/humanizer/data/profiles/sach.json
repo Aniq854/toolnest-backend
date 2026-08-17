@@ -1,0 +1,41 @@
+{
+  "id": "sach",
+  "name": "sach",
+  "created_at": "2026-08-12T07:41:45+00:00",
+  "sample_word_count": 176,
+  "fingerprint": {
+    "avg_sentence_len": 25.14,
+    "sentence_len_stdev": 6.62,
+    "long_word_pct": 37.5,
+    "flesch_reading_ease": -7.11,
+    "contraction_rate": 0.0,
+    "first_person_rate": 0.0,
+    "second_person_rate": 0.0,
+    "comma_rate": 2.29,
+    "question_rate": 0.0,
+    "para_avg_sentences": 7.0
+  },
+  "traits": {
+    "voice_summary": "Is shakhs ki awaaz formal aur technical hai, jo artificial intelligence aur technology ke vishay par kendrit hai. Unka likhne ka tareeka spasht aur vishay-vastu par adharit hai.",
+    "tone_labels": [
+      "formal",
+      "informative",
+      "objective"
+    ],
+    "signature_phrases": [
+      "Artificial Intelligence is rapidly transforming the modern workplace",
+      "intelligence amplifier"
+    ],
+    "common_openers": [
+      "Artificial Intelligence is rapidly transforming the modern workplace"
+    ],
+    "avoid_words": [
+      "emotional",
+      "personal",
+      "anecdotal"
+    ],
+    "punctuation_habits": "dashes, commas, aur periods ka istemal, lekin semicolons aur exclamation marks ka kam istemal",
+    "person": "third",
+    "formality": "formal"
+  }
+}
