@@ -29,6 +29,7 @@ const downloadVideo = (youtubeUrl, outputPath) => {
       '--force-ipv4',
       '--no-check-certificates',
       '--no-playlist',
+      ...(fs.existsSync('/etc/secrets/cookies.txt') ? ['--cookies', '/etc/secrets/cookies.txt'] : []),
       '--extractor-args', 'youtube:player_client=web_safari,mweb,ios,tv',
       '--retries', '5',
       '--sleep-requests', '1',
