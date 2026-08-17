@@ -13,6 +13,30 @@ const bundledBin = path.resolve(
 );
 const ytdlpPath = fs.existsSync(bundledBin) ? bundledBin : 'yt-dlp';
 
+// --- Cookies -------------------------------------------------------------
+// Render mounts Secret Files at /etc/secrets/... on a READ-ONLY filesystem.
+// yt-dlp writes the cookie jar back after each request (YouTube rotates
+// session cookies), which crashed with:
+//   OSError: [Errno 30] Read-only file system: '/etc/secrets/cookies.txt'
+// Fix: copy the secret once into a writable temp path and point yt-dlp there,
+// so rotated cookies persist for the life of the container instead of dying.
+const COOKIE_SECRET = '/etc/secrets/cookies.txt';
+const COOKIE_WRITABLE = path.join(os.tmpdir(), 'yt-cookies.txt');
+
+const getCookieFile = () => {
+  try {
+    if (fs.existsSync(COOKIE_WRITABLE)) return COOKIE_WRITABLE;
+    if (!fs.existsSync(COOKIE_SECRET)) return null;
+    fs.copyFileSync(COOKIE_SECRET, COOKIE_WRITABLE);
+    fs.chmodSync(COOKIE_WRITABLE, 0o600);
+    console.log('Cookies copied to writable path:', COOKIE_WRITABLE);
+    return COOKIE_WRITABLE;
+  } catch (e) {
+    console.error('Could not prepare cookie file:', e.message);
+    return null;
+  }
+};
+
 const extractYoutubeId = (url) => {
   if (!url) return null;
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -20,16 +44,17 @@ const extractYoutubeId = (url) => {
   return match && match[2].length === 11 ? match[2] : null;
 };
 
-// Download a full YouTube video to `outputPath` (best mp4 up to 1080p, merged).
+// Download a full YouTube video to `outputPath` (best mp4 up to 720p, merged).
 const downloadVideo = (youtubeUrl, outputPath) => {
   return new Promise((resolve, reject) => {
     const ffmpegInstaller = require('@ffmpeg-installer/ffmpeg');
+    const cookieFile = getCookieFile();
 
     const args = [
       '--force-ipv4',
       '--no-check-certificates',
       '--no-playlist',
-      ...(fs.existsSync('/etc/secrets/cookies.txt') ? ['--cookies', '/etc/secrets/cookies.txt'] : []),
+      ...(cookieFile ? ['--cookies', cookieFile] : []),
       '--extractor-args', 'youtube:player_client=web_safari,mweb,ios,tv',
       '--retries', '5',
       '--sleep-requests', '1',
@@ -57,4 +82,5 @@ module.exports = {
   extractYoutubeId,
   downloadVideo,
   ytdlpPath,
+  getCookieFile,
 };
