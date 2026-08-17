@@ -7,7 +7,7 @@ echo "Render public port: $RENDER_PORT"
 cd /app/clipper/backend
 PORT=5000 node src/app.js &
 # 2. BullMQ worker
-PORT=5000 node src/worker/worker.js &
+# DISABLED (no Redis needed): PORT=5000 node src/worker/worker.js &
 sleep 3
 # 3. Python FastAPI (Humanizer + API proxy) on Render's REAL port
 cd /app/humanizer
