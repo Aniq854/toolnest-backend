@@ -3,6 +3,9 @@ FROM nikolaik/python-nodejs:python3.12-nodejs20
 # Install FFmpeg for Video Clipper
 RUN apt-get update && apt-get install -y ffmpeg && apt-get clean
 
+# Install yt-dlp (required by the Video Clipper for YouTube downloads)
+RUN pip install --no-cache-dir -U yt-dlp
+
 WORKDIR /app
 
 # Copy Python Backend (Humanizer / Proxy)
