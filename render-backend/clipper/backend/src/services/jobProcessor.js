@@ -14,23 +14,53 @@ const getStoragePath = (subDir) => {
   return p;
 };
 
+// Cut the WHOLE video into back-to-back clips of the length the user picked,
+// instead of picking 2-5 spread-out samples. A 10 minute video at 1 min gives
+// 10 clips, at 30s gives 20.
+//
+// Two ceilings keep a single job from monopolising the free Render box, since
+// every clip is a real ffmpeg re-encode: at most MAX_CLIPS clips, and at most
+// MAX_OUTPUT_SECONDS of footage in total. Whatever is skipped is logged rather
+// than silently dropped.
+const MAX_CLIPS = 24;
+const MAX_OUTPUT_SECONDS = 45 * 60;
+
 function buildTimeBasedMoments(videoDuration, clipLen){
-  clipLen = clipLen || 30;
-  let count;
-  if(videoDuration<=clipLen) count=1;
-  else if(videoDuration<=90) count=2;
-  else if(videoDuration<=300) count=3;
-  else if(videoDuration<=900) count=5;
-  else count=Math.min(8, Math.max(1, Math.floor(videoDuration/clipLen)));
-  const gap = videoDuration/count;
-  const out=[];
-  for(let i=0;i<count;i++){
-    const start = Math.floor(i*gap);
-    const end = Math.min(start+clipLen, Math.floor(videoDuration));
-    if(end-start < 3) continue;
-    out.push({start_time:start, end_time:end, title:'Clip '+(i+1), reason:'Fast time-based clip', virality_score:5});
+  clipLen = Math.max(5, Math.floor(clipLen || 30));
+  const total = Math.floor(videoDuration || 0);
+
+  if (total < 5) {
+    return [{ start_time: 0, end_time: Math.max(3, total), title: 'Clip 1',
+              reason: 'Whole video', virality_score: 5 }];
   }
-  return out.length ? out : [{start_time:0, end_time:Math.min(clipLen, Math.floor(videoDuration)), title:'Clip 1', reason:'Fast clip', virality_score:5}];
+
+  const out = [];
+  let seconds = 0;
+  for (let start = 0; start < total; start += clipLen) {
+    const end = Math.min(start + clipLen, total);
+    if (end - start < 3) break;                       // ignore a sliver at the end
+    if (out.length >= MAX_CLIPS) break;
+    if (seconds + (end - start) > MAX_OUTPUT_SECONDS) break;
+    seconds += end - start;
+    out.push({
+      start_time: start,
+      end_time: end,
+      title: 'Clip ' + (out.length + 1),
+      reason: 'Part ' + (out.length + 1) + ' of the video',
+      virality_score: 5
+    });
+  }
+
+  const covered = out.length ? out[out.length - 1].end_time : 0;
+  if (covered < total - 3) {
+    console.log(`\u2702\ufe0f  Cut ${out.length} clips covering ${covered}s of ${total}s ` +
+                `(limit: ${MAX_CLIPS} clips / ${MAX_OUTPUT_SECONDS}s per job).`);
+  } else {
+    console.log(`\u2702\ufe0f  Cut ${out.length} clips covering the full ${total}s.`);
+  }
+
+  return out.length ? out : [{ start_time: 0, end_time: Math.min(clipLen, total),
+                               title: 'Clip 1', reason: 'Whole video', virality_score: 5 }];
 }
 
 const processJobDirectly = async (jobId) => {
